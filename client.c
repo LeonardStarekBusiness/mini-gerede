@@ -45,7 +45,7 @@ int main(int ac, char **av)
 	}
 	message.destination = ft_atoi(av[1]);
 	send_message(1, NULL, NULL);
-	while ((message.byte < ft_strlen(av[2])) && (message.bit < 8))
+	while ((message.byte <= ft_strlen(av[2])) && (message.bit < 8))
 	{
 		pause();
 	}

@@ -25,12 +25,16 @@ void zero(int num, siginfo_t *info, void *mask)
 		octet.byte = -octet.byte;
 		octet.byte--;
 		write(STDOUT_FILENO, &octet.byte, 1);
+		if (octet.byte)
+			kill((int)info->si_pid, SIGUSR1);
 		octet.byte = 0;
 		octet.recieved = 0;
 	}
 	else
+	{
 		octet.recieved++;
-	kill((int)info->si_pid, SIGUSR1);
+		kill((int)info->si_pid, SIGUSR1);
+	}
 }
 
 void one(int num, siginfo_t *info, void *mask)
@@ -42,12 +46,16 @@ void one(int num, siginfo_t *info, void *mask)
 		octet.byte = -octet.byte;
 		octet.byte--;
 		write(STDOUT_FILENO, &octet.byte, 1);
+		if (octet.byte)
+			kill((int)info->si_pid, SIGUSR1);
 		octet.byte = 0;
 		octet.recieved = 0;
 	}
 	else
+	{
 		octet.recieved++;
-	kill((int)info->si_pid, SIGUSR1);
+		kill((int)info->si_pid, SIGUSR1);
+	}
 }
 
 int	main(void)
