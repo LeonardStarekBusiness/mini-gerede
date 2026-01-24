@@ -2,7 +2,7 @@ CLIENT = client
 SERVER = server
 LIBNAME = libft/libft.a
 
-CFLAGGEN = -Wall -Wextra -Werror
+CFLAGGEN = -Wall -Wextra -Werror -Wpedantic
 
 CC = cc
 
