@@ -1,41 +1,35 @@
-CLIENT = client
-SERVER = server
-LIBNAME = libft/libft.a
+KUNDE = client
+KELLNER = server
 
 CFLAGGEN = -Wall -Wextra -Werror -Wpedantic
 
 CC = cc
 
-QUELLE_CLIENT = client.c
-QUELLE_SERVER = server.c
+QUELLE_KUNDE = helper.c client.c
+QUELLE_KELLNER = helper.c server.c
 
-OBJEKT_CLIENT = $(QUELLE_CLIENT:.c=.o)
-OBJEKT_SERVER = $(QUELLE_SERVER:.c=.o)
+OBJEKTE_KUNDE = $(QUELLE_KUNDE:.c=.o)
+OBJEKTE_KELLNER = $(QUELLE_KELLNER:.c=.o)
 
 
-all: $(SERVER) $(CLIENT)
+all: $(KELLNER) $(KUNDE)
 
 %.o: %.c
 	$(CC) $(CFLAGGEN) -c $< -o $@
 
-libft/libft.a:
-	cd libft && make
+$(KUNDE): $(OBJEKTE_KUNDE)
+	$(CC) $(CFLAGGEN) $(OBJEKTE_KUNDE) -o $(KUNDE)
 
-$(CLIENT): $(OBJEKT_CLIENT) libft/libft.a
-	$(CC) $(CFLAGGEN) $(OBJEKT_CLIENT) $(LIBNAME) -o $(CLIENT)
-
-$(SERVER): $(OBJEKT_SERVER) libft/libft.a
-	$(CC) $(CFLAGGEN) $(OBJEKT_SERVER) $(LIBNAME) -o $(SERVER)
+$(KELLNER): $(OBJEKTE_KELLNER)
+	$(CC) $(CFLAGGEN) $(OBJEKTE_KELLNER) -o $(KELLNER)
 
 clean: 
-	rm -f $(OBJEKT_CLIENT)
-	rm -f $(OBJEKT_SERVER)
-	cd libft && make clean
+	rm -f $(OBJEKTE_KUNDE)
+	rm -f $(OBJEKTE_KELLNER)
 
 fclean: clean 
-	rm -f $(CLIENT)
-	rm -f $(SERVER)
-	rm -f $(LIBNAME)
+	rm -f $(KUNDE)
+	rm -f $(KELLNER)
 
 re: fclean all
 
