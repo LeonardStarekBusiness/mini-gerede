@@ -54,9 +54,6 @@ man kill
 [Introduction to Unix Signals](https://youtu.be/83M5-NPDeWs?si=XYbqc5pwipAU8HNN)  
 
 ## AI?  
-AI was used to troubleshoot, explaining concepts or pointing out mistakes that would be too nische to find answers to using man pages or tutorials  
-No code was directly written or modified by AI.  
-AI helped specifically with:  
--pointing out the existance of the sig_atomic_t type  
--pointing out that keeping signal handler functions minimal and avoiding non-system-call-functions is ideal.  
-it should be noted that my program is safe anyway because of the handshake technique.  
+AI was consulted in sheer desperation somewhere in my 999 retries but ended up not helping at all.  
+AI was passed my code and analysed it.  
+No code was directly written by AI.  
