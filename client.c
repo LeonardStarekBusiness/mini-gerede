@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstarek <lstarek@student.42vienna.com      +#+  +:+       +#+        */
+/*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/01/19 23:26:53 by lstarek          ###   ########.fr       */
+/*   Updated: 2026/03/02 11:39:52 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 t_message	g_message = {NULL, 0, 0, 0};
 
+#include <stdio.h>
+
 void	send_message(int num)
 {
 	if (num == SIGUSR2)
 		exit(0);
-	if (g_message.msg[g_message.byte] == 0 && g_message.bit >= 8)
+	if ((g_message.msg[g_message.byte] == 0) && (g_message.bit >= 8))
 		return ;
-	g_message.bit++;
 	if (g_message.bit >= 8)
 	{
 		g_message.bit = 0;
 		g_message.byte++;
 	}
-	if ((g_message.msg[g_message.byte] >> (g_message.bit - 1)) & 1)
+	if ((g_message.msg[g_message.byte] >> (g_message.bit++)) & 1)
 	{
 		if (kill(g_message.destination, SIGUSR1) == -1)
 			exit(-1);
@@ -58,8 +59,7 @@ int	main(int ac, char **av)
 	sigaction(SIGUSR2, &answer, NULL);
 	g_message.destination = ft_atoi(av[1]);
 	send_message(1);
-	while ((g_message.byte <= (sig_atomic_t)ft_strlen(av[2]))
-		&& (g_message.bit < 8))
+	while (1)
 	{
 		pause();
 	}

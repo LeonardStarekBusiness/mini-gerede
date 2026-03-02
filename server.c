@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lstarek <lstarek@student.42vienna.com      +#+  +:+       +#+        */
+/*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/01/19 23:26:53 by lstarek          ###   ########.fr       */
+/*   Updated: 2026/03/02 11:39:25 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ void	handler(int num, siginfo_t *info, void *mask)
 
 	(void)mask;
 	end = 0;
-	if (num == SIGUSR2)
+	if (num == SIGUSR1)
 		g_octet.byte |= (1 << g_octet.recieved);
 	if (g_octet.recieved >= 7)
 	{
-		g_octet.byte = (char) ~g_octet.byte;
 		end = !g_octet.byte;
 		write(STDOUT_FILENO, &g_octet.byte, 1);
 		g_octet = (t_octet){0, 0};
@@ -38,6 +37,7 @@ void	handler(int num, siginfo_t *info, void *mask)
 	}
 	else
 	{
+		write(1, "\0", 1);
 		if (kill((int)info->si_pid, SIGUSR2) == -1)
 			exit(0);
 	}
