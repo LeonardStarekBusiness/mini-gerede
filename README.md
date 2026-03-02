@@ -56,4 +56,5 @@ man kill
 ## AI?  
 AI was consulted in sheer desperation somewhere in my 999 retries but ended up not helping at all.  
 AI was passed my code and analysed it.  
+It gave advice on where the issue may lie but was wrong in the end.  
 No code was directly written by AI.  
