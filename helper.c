@@ -6,7 +6,7 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:21:20 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 20:29:51 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/03 21:20:48 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ static int abso(int n)
 	if (n < 0)
 		return (-n);
 	return (n);
-}
-
-static int is_it_space(char c)
-{
-	return (c == 32 || (c >= 9 && c <= 13));
 }
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
@@ -79,7 +74,7 @@ int ft_atoi(const char *str)
 	i = 0;
 	minus_counter = 0;
 	sum = 0;
-	while (is_it_space(str[i]))
+	while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
