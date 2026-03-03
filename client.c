@@ -6,7 +6,7 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 20:17:11 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/03 20:24:27 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ int main(int ac, char **av)
 	g_message.destination = ft_atoi(av[1]);
 	send_message(1);
 	while (1)
-	{
 		pause();
-	}
 	return (0);
 }

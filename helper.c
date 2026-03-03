@@ -6,11 +6,12 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:21:20 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 20:17:19 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/03 20:29:51 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
 
 static int abso(int n)
 {
@@ -22,6 +23,25 @@ static int abso(int n)
 static int is_it_space(char c)
 {
 	return (c == 32 || (c >= 9 && c <= 13));
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t			i;
+	unsigned char	*csrc;
+	unsigned char	*cdest;
+
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	csrc = (unsigned char *)src;
+	cdest = (unsigned char *)dest;
+	i = 0;
+	while (i < n)
+	{
+		cdest[i] = csrc[i];
+		i++;
+	}
+	return (cdest);
 }
 
 int ft_putnbr(int n)

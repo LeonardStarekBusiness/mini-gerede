@@ -54,7 +54,7 @@ man kill
 [Introduction to Unix Signals](https://youtu.be/83M5-NPDeWs?si=XYbqc5pwipAU8HNN)  
 
 ## AI?  
-AI was consulted in sheer desperation somewhere in my 999 retries but ended up not helping at all.  
 AI was passed my code and analysed it.  
-It gave advice on where the issue may lie but was wrong in the end.  
+It gave advice on where the issue may lie but was wrong in the end, little to no of the advice made it into my project.  
+Using the handshake technique renders most of the concerns about data corruption obsolete.  
 No code was directly written by AI.  

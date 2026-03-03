@@ -6,18 +6,20 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 20:17:22 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/03 20:34:11 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static t_octet g_octet = {0, 0};
+static short g_byte_data = 0;
 
 void handler(int num, siginfo_t *info, void *mask)
 {
 	sig_atomic_t end;
+	t_octet g_octet;
 
+	ft_memcpy(&g_octet, &g_byte_data, 2);
 	(void)mask;
 	end = 0;
 	if (num == SIGUSR1)
@@ -30,6 +32,7 @@ void handler(int num, siginfo_t *info, void *mask)
 	}
 	else
 		g_octet.recieved++;
+	ft_memcpy(&g_byte_data, &g_octet, 2);
 	if (!end)
 	{
 		if (kill((int)info->si_pid, SIGUSR1) == -1)
