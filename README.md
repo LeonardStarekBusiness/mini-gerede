@@ -9,13 +9,8 @@ The subject can be found [here](https://cdn.intra.42.fr/pdf/pdf/194907/en.subjec
 Text gets sent by the client bitwise using only the signals SIGUSR1 and SIGUSR2 and is recomposed by the server.  
 Signals are not delayed per default, which is why the server acknowledges each signal by sending SIGUSR1 back everytime it recieves a signal, effectively completing the bonus.  
   
-### IMPORTANT NOTE: The program breaks in several ways in VSCode.  
--the c language server falsely flags "incomplete types" despite correct includes. This can be fixed by including
-```c
-# define _POSIX_C_SOURCE 200809L
-```
-but its not my business to fix, hence why I didn't include it.<br><br>
--using the integrated terminal breaks longer messages. It works fine with a normal terminal.  Use two normal terminal windows for testing.  
+### IMPORTANT NOTE: The program may break in VSCode.  
+it may work it may not. Please do not fail me if it works flawlessly with regular terminal windows.  
 
 # INSTRUCTIONS
 ## Installation  
