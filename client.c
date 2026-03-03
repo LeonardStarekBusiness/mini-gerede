@@ -6,15 +6,13 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/02 11:39:52 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/03 20:13:42 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
 t_message	g_message = {NULL, 0, 0, 0};
-
-#include <stdio.h>
 
 void	send_message(int num)
 {
