@@ -6,28 +6,28 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:21:20 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 20:13:39 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/03 20:17:19 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-static int	abso(int n)
+static int abso(int n)
 {
 	if (n < 0)
 		return (-n);
 	return (n);
 }
 
-static int	is_it_space(char c)
+static int is_it_space(char c)
 {
 	return (c == 32 || (c >= 9 && c <= 13));
 }
 
-int	ft_putnbr(int n)
+int ft_putnbr(int n)
 {
-	char	*map;
-	int		i;
+	char *map;
+	int i;
 
 	i = 0;
 	map = "0123456789";
@@ -50,11 +50,11 @@ int	ft_putnbr(int n)
 	return (i);
 }
 
-int	ft_atoi(const char *str)
+int ft_atoi(const char *str)
 {
-	int	i;
-	int	minus_counter;
-	int	sum;
+	int i;
+	int minus_counter;
+	int sum;
 
 	i = 0;
 	minus_counter = 0;
@@ -77,9 +77,9 @@ int	ft_atoi(const char *str)
 		return (sum);
 }
 
-size_t	ft_strlen(const char *str)
+size_t ft_strlen(const char *str)
 {
-	size_t	n;
+	size_t n;
 
 	n = 0;
 	while (str[n] != 0)

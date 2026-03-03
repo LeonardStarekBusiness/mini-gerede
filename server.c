@@ -6,17 +6,17 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 20:15:18 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/03 20:17:22 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static t_octet	g_octet = {0, 0};
+static t_octet g_octet = {0, 0};
 
-void	handler(int num, siginfo_t *info, void *mask)
+void handler(int num, siginfo_t *info, void *mask)
 {
-	sig_atomic_t	end;
+	sig_atomic_t end;
 
 	(void)mask;
 	end = 0;
@@ -43,9 +43,9 @@ void	handler(int num, siginfo_t *info, void *mask)
 	}
 }
 
-int	main(void)
+int main(void)
 {
-	struct sigaction	sa;
+	struct sigaction sa;
 
 	sa.sa_sigaction = handler;
 	sa.sa_flags = SA_SIGINFO;

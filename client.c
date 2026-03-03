@@ -6,20 +6,20 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 20:15:07 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/03 20:17:11 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static t_message	g_message = {NULL, 0, 0, 0};
+static t_message g_message = {NULL, 0, 0, 0};
 
-void	send_message(int num)
+void send_message(int num)
 {
 	if (num == SIGUSR2)
 		exit(0);
 	if ((g_message.msg[g_message.byte] == 0) && (g_message.bit >= 8))
-		return ;
+		return;
 	if (g_message.bit >= 8)
 	{
 		g_message.bit = 0;
@@ -29,24 +29,24 @@ void	send_message(int num)
 	{
 		if (kill(g_message.destination, SIGUSR1) == -1)
 			exit(-1);
-		return ;
+		return;
 	}
 	else
 	{
 		if (kill(g_message.destination, SIGUSR2) == -1)
 			exit(-1);
-		return ;
+		return;
 	}
 }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	struct sigaction	answer;
+	struct sigaction answer;
 
 	if (ac != 3 || ft_atoi(av[1]) <= 0)
 	{
 		write(STDOUT_FILENO,
-			"\nCORRECT USAGE:\n./client <server PID> <message>\n\n", 50);
+			  "\nCORRECT USAGE:\n./client <server PID> <message>\n\n", 50);
 		return (0);
 	}
 	g_message.msg = av[2];
