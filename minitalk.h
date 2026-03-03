@@ -6,7 +6,7 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 15:17:12 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 20:30:53 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/03 20:43:11 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ typedef unsigned char	t_byte;
 
 typedef struct s_message
 {
-	char	*msg;
-	int		byte;
-	int		bit;
-	pid_t	destination;
+	char		*msg;
+	short		bit;
 }			t_message;
 
 typedef struct s_octet

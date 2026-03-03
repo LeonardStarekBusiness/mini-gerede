@@ -6,13 +6,13 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 20:34:11 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/03 20:46:04 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static short g_byte_data = 0;
+static short g_byte_data;
 
 void handler(int num, siginfo_t *info, void *mask)
 {
