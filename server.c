@@ -6,7 +6,7 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 21:43:35 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/03 22:01:12 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static short g_byte_data;
 
 void handler(int num, siginfo_t *info, void *mask)
 {
-	t_octet g_octet;
+	t_octet	g_octet;
+	int		hasFailed;
 
 	mask = NULL;
 	ft_memcpy(&g_octet, &g_byte_data, 2);
@@ -33,12 +34,14 @@ void handler(int num, siginfo_t *info, void *mask)
 		g_octet.recieved++;
 	ft_memcpy(&g_byte_data, &g_octet, 2);
 	if (!mask)
-		kill((int)info->si_pid, SIGUSR1);
+		hasFailed = kill((int)info->si_pid, SIGUSR1);
 	else
 	{
 		write(1, "\0", 1);
-		kill((int)info->si_pid, SIGUSR2);
+		hasFailed = kill((int)info->si_pid, SIGUSR2);
 	}
+	if (hasFailed == -1)
+		exit(0);
 }
 
 int main(void)

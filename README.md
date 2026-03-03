@@ -5,9 +5,10 @@ This readme will concern only the evaluator in the context of a 42 school peer-e
 
 # DESCRIPTION
 The purpose of this project is to code a small data exchange program using UNIX signals.  
-The subject can be found [here](https://cdn.intra.42.fr/pdf/pdf/194907/en.subject.pdf)  
+The subject can be found [here](https://cdn.intra.42.fr/pdf/pdf/196737/en.subject.pdf)  
 Text gets sent by the client bitwise using only the signals SIGUSR1 and SIGUSR2 and is recomposed by the server.  
 Signals are not delayed per default, which is why the server acknowledges each signal by sending SIGUSR1 back everytime it recieves a signal, effectively completing the bonus.  
+FYI: I have only one global variable with appropriate size and cast it to a struct to modify its data.  
   
 ### IMPORTANT NOTE: The program may break in VSCode.  
 it may work it may not. Please do not fail me if it works flawlessly with regular terminal windows.  
