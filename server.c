@@ -14,6 +14,7 @@
 
 static short g_byte_data;
 
+//if no other signal after other signal, timeout = print nullbyte
 void handler(int num, siginfo_t *info, void *mask)
 {
 	t_octet	g_octet;
