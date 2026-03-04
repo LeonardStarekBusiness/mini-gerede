@@ -66,7 +66,7 @@ int main(int ac, char **av)
 	sigaction(SIGUSR1, &answer, NULL);
 	sigaction(SIGUSR2, &answer, NULL);
 	info.si_pid = ft_atoi(av[1]);
-	send_message(1, &info, NULL);
+	send_message(SIGUSR1, &info, NULL);
 	while (1)
 		pause();
 	return (0);
