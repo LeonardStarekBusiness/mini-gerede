@@ -6,7 +6,7 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 20:45:58 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/04 23:10:26 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,26 @@ void send_message(int num, siginfo_t *info, void *mask)
 	}
 }
 
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t	i;
 
-//itoa atoi check to catch invalid inputs
+	i = 0;
+	while (1)
+	{
+		if (s1[i] != s2[i] || !s1[i] || !s2[i])
+			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
+		i++;
+	}
+}
+
 int main(int ac, char **av)
 {
 	struct sigaction answer;
 	siginfo_t info;
 	t_message g_message;
 
-	if (ac != 3 || ft_atoi(av[1]) <= 0)
+	if (ac != 3 || ft_atoi(av[1]) <= 0 || ft_strcmp(ft_itoa(ft_atoi(av[1])), av[1]))
 	{
 		write(STDOUT_FILENO,
 			  "\nCORRECT USAGE:\n./client <server PID> <message>\n\n", 50);

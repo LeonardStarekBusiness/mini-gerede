@@ -6,19 +6,12 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:21:20 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 21:20:48 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/04 23:07:05 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-
-static int abso(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
-}
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
@@ -37,6 +30,13 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		i++;
 	}
 	return (cdest);
+}
+
+static int abso(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
 }
 
 int ft_putnbr(int n)
@@ -92,14 +92,34 @@ int ft_atoi(const char *str)
 		return (sum);
 }
 
-size_t ft_strlen(const char *str)
+char	*ft_itoa(int n)
 {
-	size_t n;
+	char		*str;
+	int			len;
+	long int	nb;
 
-	n = 0;
-	while (str[n] != 0)
+	nb = n;
+	len = (n <= 0);
+	while (n != 0)
 	{
-		n++;
+		len++;
+		n /= 10;
 	}
-	return (n);
+	str = malloc(len + 1);
+	if (!str)
+		return (NULL);
+	str[len] = 0;
+	if (nb < 0)
+	{
+		str[0] = '-';
+		nb = -nb;
+	}
+	if (nb == 0)
+		str[--len] = '0';
+	while (nb > 0)
+	{
+		str[--len] = (nb % 10) + '0';
+		nb /= 10;
+	}
+	return (str);
 }

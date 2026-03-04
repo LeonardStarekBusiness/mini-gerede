@@ -6,7 +6,7 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 15:17:12 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 20:43:11 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/04 22:59:16 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct s_octet
 }			t_octet;
 
 int			ft_putnbr(int n);
-size_t		ft_strlen(const char *str);
 int			ft_atoi(const char *str);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
+char		*ft_itoa(int n);
 
 #endif // MINITALK_H
