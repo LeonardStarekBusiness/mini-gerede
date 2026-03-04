@@ -41,7 +41,7 @@ void handler(int num, siginfo_t *info, void *mask)
 		hasFailed = kill((int)info->si_pid, SIGUSR2);
 	}
 	if (hasFailed == -1)
-		exit(0);
+		exit(-1);
 }
 
 int main(void)
