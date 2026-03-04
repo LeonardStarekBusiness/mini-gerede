@@ -6,22 +6,29 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/03 22:01:12 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/04 23:35:49 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static short g_byte_data;
+static double g_byte_data;
 
-//if no other signal after other signal, timeout = print nullbyte
-void handler(int num, siginfo_t *info, void *mask)
+void	handler(int num, siginfo_t *info, void *mask)
 {
 	t_octet	g_octet;
 	int		hasFailed;
 
 	mask = NULL;
-	ft_memcpy(&g_octet, &g_byte_data, 2);
+	ft_memcpy(&g_octet, &g_byte_data, 8);
+	if ((g_octet.last_sender != info->si_pid) && g_octet.recieved)
+	{
+		write(1, "\nInterference detected, client killed\n", 39);
+		g_byte_data = 0;
+		kill(info->si_pid, SIGUSR2);
+		kill(g_octet.last_sender, SIGUSR2);
+		return ;
+	}
 	if (num == SIGUSR1)
 		g_octet.byte |= (1 << g_octet.recieved);
 	if (g_octet.recieved >= 7)
@@ -29,11 +36,14 @@ void handler(int num, siginfo_t *info, void *mask)
 		if (!g_octet.byte)
 			mask = &g_octet;
 		write(STDOUT_FILENO, &g_octet.byte, 1);
-		g_octet = (t_octet){0, 0};
+		g_octet = (t_octet){0, 0, 0};
 	}
 	else
+	{
 		g_octet.recieved++;
-	ft_memcpy(&g_byte_data, &g_octet, 2);
+	}
+	g_octet.last_sender = info->si_pid;
+	ft_memcpy(&g_byte_data, &g_octet, 8);
 	if (!mask)
 		hasFailed = kill((int)info->si_pid, SIGUSR1);
 	else

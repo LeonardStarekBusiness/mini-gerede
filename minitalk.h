@@ -6,7 +6,7 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 15:17:12 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/04 22:59:16 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/04 23:21:10 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_octet
 {
 	t_byte	byte;
 	t_byte	recieved;
+	pid_t	last_sender;
 }			t_octet;
 
 int			ft_putnbr(int n);
