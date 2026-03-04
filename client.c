@@ -45,6 +45,8 @@ void send_message(int num, siginfo_t *info, void *mask)
 	}
 }
 
+
+//itoa atoi check to catch invalid inputs
 int main(int ac, char **av)
 {
 	struct sigaction answer;
