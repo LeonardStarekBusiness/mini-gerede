@@ -1,7 +1,7 @@
 KUNDE = client
 KELLNER = server
 
-CFLAGGEN = -Wall -Wextra -Werror -Wpedantic
+CFLAGGEN = -Wall -Wextra -Werror
 
 CC = cc
 

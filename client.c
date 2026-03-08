@@ -6,7 +6,7 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/04 23:42:43 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/08 20:42:00 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,18 @@ void send_message(int num, siginfo_t *info, void *mask)
 		ft_memcpy(&g_message_data, &g_message, 10);
 		if (kill(info->si_pid, SIGUSR1) == -1)
 			exit(-1);
-		return;
 	}
 	else
 	{
 		ft_memcpy(&g_message_data, &g_message, 10);
 		if (kill(info->si_pid, SIGUSR2) == -1)
 			exit(-1);
-		return;
 	}
 }
 
-int	ft_strcmp(const char *s1, const char *s2)
+int ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (1)
@@ -63,13 +61,15 @@ int main(int ac, char **av)
 	struct sigaction answer;
 	siginfo_t info;
 	t_message g_message;
+	char *args;
 
-	if (ac != 3 || ft_atoi(av[1]) <= 0 || ft_strcmp(ft_itoa(ft_atoi(av[1])), av[1]))
+	args = NULL;
+	if (ac != 3 || ft_atoi(av[1]) <= 0 || ft_strcmp(args = ft_itoa(ft_atoi(av[1])), av[1]))
 	{
-		write(STDOUT_FILENO,
-			  "\nCORRECT USAGE:\n./client <server PID> <message>\n\n", 50);
-		return (0);
+		write(1, "./client <server PID> <message>\n", 33);
+		return (free(args), -1);
 	}
+	free(args);
 	ft_memcpy(&g_message, &g_message_data, 10);
 	g_message.msg = av[2];
 	ft_memcpy(&g_message_data, &g_message, 10);
