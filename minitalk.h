@@ -6,7 +6,7 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 15:17:12 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/04 23:42:34 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/08 21:15:21 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int			ft_putnbr(int n);
 int			ft_atoi(const char *str);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 char		*ft_itoa(int n);
+int			ft_strcmp(const char *s1, const char *s2);
 
 #endif // MINITALK_H

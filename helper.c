@@ -6,31 +6,12 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:21:20 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/08 20:29:17 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/08 21:19:10 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t			i;
-	unsigned char	*csrc;
-	unsigned char	*cdest;
-
-	if (dest == NULL && src == NULL)
-		return (NULL);
-	csrc = (unsigned char *)src;
-	cdest = (unsigned char *)dest;
-	i = 0;
-	while (i < n)
-	{
-		cdest[i] = csrc[i];
-		i++;
-	}
-	return (cdest);
-}
 
 static int abso(int n)
 {
@@ -65,31 +46,17 @@ int ft_putnbr(int n)
 	return (i);
 }
 
-int ft_atoi(const char *str)
+int		numlen(int n)
 {
-	int i;
-	int minus_counter;
-	int sum;
-
-	i = 0;
-	minus_counter = 0;
-	sum = 0;
-	while ((str[i] == 32 || (str[i] >= 9 && str[i] <= 13)))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	int len;
+	
+	len = (n <= 0);
+	while (n != 0)
 	{
-		minus_counter = (str[i] == '-');
-		i++;
+		len++;
+		n /= 10;
 	}
-	while (str[i] <= '9' && str[i] >= '0')
-	{
-		sum = (sum * 10) + (str[i] - 48);
-		i++;
-	}
-	if (minus_counter == 1)
-		return (-sum);
-	else
-		return (sum);
+	return (len);
 }
 
 char	*ft_itoa(int n)
@@ -99,12 +66,7 @@ char	*ft_itoa(int n)
 	long int	nb;
 
 	nb = n;
-	len = (n <= 0);
-	while (n != 0)
-	{
-		len++;
-		n /= 10;
-	}
+	len = numlen(n);
 	str = malloc(len + 1);
 	if (!str)
 		return (NULL);

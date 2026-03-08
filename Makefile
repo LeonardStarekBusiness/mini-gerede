@@ -5,8 +5,8 @@ CFLAGGEN = -Wall -Wextra -Werror
 
 CC = cc
 
-QUELLE_KUNDE = helper.c client.c
-QUELLE_KELLNER = helper.c server.c
+QUELLE_KUNDE = helper2.c helper.c client.c
+QUELLE_KELLNER = helper2.c helper.c server.c
 
 OBJEKTE_KUNDE = $(QUELLE_KUNDE:.c=.o)
 OBJEKTE_KELLNER = $(QUELLE_KELLNER:.c=.o)

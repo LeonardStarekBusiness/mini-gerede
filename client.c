@@ -6,7 +6,7 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 23:06:14 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/08 20:42:00 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/08 21:15:06 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,6 @@ void send_message(int num, siginfo_t *info, void *mask)
 		ft_memcpy(&g_message_data, &g_message, 10);
 		if (kill(info->si_pid, SIGUSR2) == -1)
 			exit(-1);
-	}
-}
-
-int ft_strcmp(const char *s1, const char *s2)
-{
-	size_t i;
-
-	i = 0;
-	while (1)
-	{
-		if (s1[i] != s2[i] || !s1[i] || !s2[i])
-			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
-		i++;
 	}
 }
 
