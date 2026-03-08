@@ -6,11 +6,11 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:21:20 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/08 21:20:20 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/08 21:26:56 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "minitalk.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

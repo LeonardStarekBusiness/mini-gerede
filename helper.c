@@ -6,12 +6,11 @@
 /*   By: baal <baal@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:21:20 by lstarek           #+#    #+#             */
-/*   Updated: 2026/03/08 21:19:10 by baal             ###   ########.fr       */
+/*   Updated: 2026/03/08 21:26:50 by baal             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
+#include "minitalk.h"
 
 static int abso(int n)
 {
